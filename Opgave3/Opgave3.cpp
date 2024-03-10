@@ -6,7 +6,6 @@
 inline size_t leftChild(size_t i) { return 2 * i + 1; }
 inline size_t rightChild(size_t i) { return 2 * i + 2; }
 
-
 template<typename T>
 class MinHeap {
 public:
