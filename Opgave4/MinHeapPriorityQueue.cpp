@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <stdexcept>
 #include "priority_queue.h"
-#include "../Opgave3/MinHeap.cpp" // Assuming MinHeap implementation resides in this file
+#include "../Opgave3/MinHeap.cpp"
 
 using namespace std;
 
