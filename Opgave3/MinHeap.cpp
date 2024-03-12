@@ -10,6 +10,8 @@ template<typename T>
 class MinHeap {
 public:
     // Constructor, der bygger min-heap, svarende til Slide 30
+   public:
+    // Constructor, minHeapify, isEmpty, peek, remove
     MinHeap(std::vector<T>& array) : heapArray(array) {
         for (int i = heapArray.size() / 2 - 1; i >= 0; --i)
             minHeapify(heapArray, i, heapArray.size());
@@ -53,7 +55,7 @@ public:
         }
     }
 
-private:
+protected:
     std::vector<T>& heapArray;
 };
 
@@ -71,28 +73,4 @@ std::vector<T> heapsort(std::vector<T>& array) {
     }
 
     return sortedArray;
-}
-
-int main() {
-    // Testprogram 
-    std::vector<int> testArray = {4, 10, 3, 5, 1};
-
-    // Udskriv oprindeligt array
-    std::cout << "Oprindeligt array: ";
-    for (const auto& element : testArray) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-
-    // Anvend heapsort på arrayet
-    std::vector<int> sortedArray = heapsort(testArray);
-
-    // Udskriv det sorterende array
-    std::cout << "Sorteret array: ";
-    for (const auto& element : sortedArray) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-
-    return 0;
 }
