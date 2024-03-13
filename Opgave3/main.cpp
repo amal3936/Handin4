@@ -1,25 +1,27 @@
-#include "MinHeap.cpp"
+#include "MinHeap1.cpp"
+#include <iostream>
+using namespace std;
 
-int main() {
-    // Testprogram 
-    std::vector<int> testArray = {4, 10, 3, 5, 1};
+int main()
+{
+    // Testprogram
+    MinHeap<int> heap;
+    heap.insert(59);
+    heap.insert(44);
+    heap.insert(79);
+    heap.insert(17);
+    heap.insert(54);
+    heap.insert(32);
+    heap.insert(31);
+    heap.insert(12);
+    heap.insert(7);
+    heap.insert(4);
+    heap.insert(1);
 
-    // Udskriv oprindeligt array
-    std::cout << "Oprindeligt array: ";
-    for (const auto& element : testArray) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
+    cout << "Heap after insertion: " << endl;
+    heap.printHeap();
 
-    // Anvend heapsort på arrayet
-    std::vector<int> sortedArray = heapsort(testArray);
-
-    // Udskriv det sorterende array
-    std::cout << "Sorteret array: ";
-    for (const auto& element : sortedArray) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-
-    return 0;
+    heap.remove();
+    cout << "Heap after remove: " << endl;
+    heap.printHeap();
 }
