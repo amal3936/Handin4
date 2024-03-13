@@ -1,27 +1,29 @@
-#include "MinHeap1.cpp"
-#include <iostream>
-using namespace std;
+#include "MinHeapPriorityQueue.cpp"
 
-int main()
-{
-    // Testprogram
-    MinHeap<int> heap;
-    heap.insert(59);
-    heap.insert(44);
-    heap.insert(79);
-    heap.insert(17);
-    heap.insert(54);
-    heap.insert(32);
-    heap.insert(31);
-    heap.insert(12);
-    heap.insert(7);
-    heap.insert(4);
-    heap.insert(1);
+int main() {
+    vector<int> elements = {25, 5, 15, 10, 30};
+    MinHeapPriorityQueue<int> pq(elements);
 
-    cout << "Heap after insertion: " << endl;
-    heap.printHeap();
+    cout << "Elements:" << endl;
+    for (const auto& element : elements) {
+        cout << element << " ";
+    }
+    cout << endl;
 
-    heap.remove();
-    cout << "Heap after remove: " << endl;
-    heap.printHeap();
+    cout << endl<< "New elements 30 and 35" << endl;
+    pq.push(20);
+    pq.push(35);
+
+    cout << endl<< "Top: " << pq.top() << endl;
+    pq.pop();
+    cout << "New top: " << pq.top() << endl;
+
+    cout << endl<<"Updated list of elements:" << endl;
+    while (!pq.empty()) {
+        cout << pq.top() << " ";
+        pq.pop();
+    }
+    cout << endl;
+
+    return 0;
 }
