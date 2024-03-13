@@ -1,36 +1,33 @@
 #include <iostream>
 #include <vector>
 #include "priority_queue.h"
-#include "../Opgave3/MinHeap.cpp"
+#include "../Opgave2/MinHeap1.cpp"
 
 using namespace std;
 
-template<typename T>
-class MinHeapPriorityQueue : public PriorityQueue<T>, public MinHeap<T> {
+template <typename T>
+class MinHeapPriorityQueue : public PriorityQueue<T>
+{
+    MinHeap<int> heap;
+
 public:
-    MinHeapPriorityQueue(vector<T>& elements) : MinHeap<T>(elements) {}
-
-    void push(const T& x) override {
-        this->heapArray.push_back(x);
+    MinHeapPriorityQueue()
+    {
     }
-
-    void pop() override {
-        if (!this->isEmpty()) {
-            MinHeap<T>::remove();
-        } else {
-            throw out_of_range("Priority queue is empty");
-        }
+    void push(const T &x) override
+    {
+        heap.insert(x);
     }
-
-    T top() override {
-        if (!this->isEmpty()) {
-            return MinHeap<T>::peek();
-        } else {
-            throw out_of_range("Priority queue is empty");
-        }
+    void pop() override
+    {
+        heap.remove();
     }
-
-    bool empty() const override {
-        return MinHeap<T>::isEmpty();
+    T top() override
+    {
+        return heap.peek();
+    }
+    bool empty() override
+    {
+        return heap.isEmpty();
     }
 };

@@ -1,29 +1,24 @@
 #include "MinHeapPriorityQueue.cpp"
 
-int main() {
-    vector<int> elements = {25, 5, 15, 10, 30};
-    MinHeapPriorityQueue<int> pq(elements);
+int main()
+{
+    MinHeapPriorityQueue<int> pq;
+    pq.push(59);
+    pq.push(44);
+    pq.push(79);
+    pq.push(17);
+    pq.push(54);
+    pq.push(32);
+    pq.push(31);
+    pq.push(12);
+    pq.push(7);
+    pq.push(4);
+    pq.push(1);
 
-    cout << "Elements:" << endl;
-    for (const auto& element : elements) {
-        cout << element << " ";
-    }
-    cout << endl;
+    cout << "Top " << pq.top() << endl;
 
-    cout << endl<< "New elements 30 and 35" << endl;
-    pq.push(20);
-    pq.push(35);
-
-    cout << endl<< "Top: " << pq.top() << endl;
     pq.pop();
-    cout << "New top: " << pq.top() << endl;
-
-    cout << endl<<"Updated list of elements:" << endl;
-    while (!pq.empty()) {
-        cout << pq.top() << " ";
-        pq.pop();
-    }
-    cout << endl;
+    cout << "Top " << pq.top() << endl;
 
     return 0;
 }
