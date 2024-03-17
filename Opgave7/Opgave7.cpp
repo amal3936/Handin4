@@ -36,8 +36,8 @@ private:
     }
 
 public:
-    // Konstruktør for AVLTree-klassen.
-    // Initialiserer roden til nullptr, da træet starter tomt.
+    // Consturtor for AVLTree-klassen.
+    // Roden bliver sat til nullptr, da træet starter tomt.
     AVLTree() : root(nullptr) {}
 
     // Returnerer true, hvis højdeoplysningerne er balanceret
@@ -56,7 +56,7 @@ private:
         // Hvis den aktuelle node er nullptr, oprettes en ny node med den givne værdi.
         if (node == nullptr) return new TreeNode(value);
 
-        // Sammenlign den nye værdi med værdien i den aktuelle node
+        // Sammenligner den nye værdi med værdien i den aktuelle node
         // Indsæt den nye værdi i det passende undertræ baseret på sammenligningen
         if (value < node->data)
             node->left = insertRecursive(node->left, value); // Indsæt til venstre subtræ
