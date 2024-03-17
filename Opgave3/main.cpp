@@ -2,6 +2,7 @@
 
 int main()
 {
+    // Testprogram
     MinHeapPriorityQueue<int> pq;
     pq.push(59);
     pq.push(44);

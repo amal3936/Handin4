@@ -14,18 +14,22 @@ public:
     MinHeapPriorityQueue()
     {
     }
+    // Tilføjer et element til prioritetskøen
     void push(const T &x) override
     {
         heap.insert(x);
     }
+    // Fjerner det øverste element fra prioritetskøen
     void pop() override
     {
         heap.remove();
     }
+    // Returnerer det mindste element uden at fjerne det
     T top() override
     {
         return heap.peek();
     }
+    // Undersøger om prioritetskøen er tom
     bool empty() override
     {
         return heap.isEmpty();

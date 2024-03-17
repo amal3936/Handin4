@@ -10,35 +10,36 @@ using namespace std;
 template <typename T>
 class MinHeap
 {
-    std::vector<T> heap;
+    std::vector<T> heap; // Vektor til at gemme heap-elementer
 
 public:
     /**
-     * @brief Inserts an element and updates the Heap
+     * @brief Indsætter et element og opdaterer heap'en
      *
-     * @param x Element to insert
+     * @param x Elementet der skal indsættes
      */
     void insert(const T &x)
     {
-        // YOUR CODE GOES HERE
+        // Tilføj det nye element til slutningen af vektoren
         heap.push_back(x);
 
-        // heapify up process
+        // // Opdaterer heap'en opad
         int i = heap.size() - 1;
         percolateUp(i);
     }
 
     /**
-     * @brief Remove minimum (top) element and update Heap
+     * @brief Fjerner minimum (øverste) element og opdaterer heap'en
      *
      */
     void remove()
     {
         if (heap.empty())
             return;
-
+        // Erstat det øverste element med det sidste element i vektoren
         heap[0] = std::move(heap.back());
         heap.pop_back();
+        // Opdater heap'en nedad
         percolateDown(0);
     }
 
@@ -60,12 +61,13 @@ public:
      */
     T peek()
     {
-        // YOUR CODE GOES HERE
+        // Returner det øverste element i heap'en, hvis den ikke er tom
         if (!heap.empty())
             return heap[0];
-        return T();
+        return T(); // Returner en standardværdi for typen T, hvis heap'en er tom
     }
 
+    // Udskriver hele heap'en
     void printHeap()
     {
         for (auto &i : heap)
@@ -150,7 +152,7 @@ private:
         heap[i2] = temp;
     }
 
-    size_t parent(int i) const { return (i - 1) / 2; }
-    size_t left(int i) const { return 2 * i + 1; }
-    size_t right(int i) const { return 2 * i + 2; }
+    size_t parent(int i) const { return (i - 1) / 2; } // Finder indeks for forældrenoden
+    size_t left(int i) const { return 2 * i + 1; } // Finder indeks for venstre barn
+    size_t right(int i) const { return 2 * i + 2; }  // Finder indeks for højre barn
 };
