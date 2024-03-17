@@ -87,15 +87,17 @@ private:
     {
         if (i <= 0)
             return;
+            // Hvis indeks er 0 eller mindre, er det allerede roden, og ingen yderligere handling er nødvendig
 
-        int p = parent(i);
-        if (heap[p] <= heap[i])
+        int p = parent(i);// Finder indekset for forældrenoden
+        if (heap[p] <= heap[i])// Hvis forældrenoden er mindre end eller lig med den aktuelle node, er heap-egenskaben opretholdt
         {
-            return;
+            return; // Vi ikke behøver at foretage nogen yderligere ændringer
+        }
         }
 
-        std::swap(heap[p], heap[i]);
-        percolateUp(p);
+        std::swap(heap[p], heap[i]);// Hvis forældrenoden er større end den aktuelle node, skal vi bytte dem for at genoprette heap-egenskaben
+        percolateUp(p); // Rekursivt kald til percolateUp på forældrenoden for at fortsætte percolating opad
     }
 
     /**
