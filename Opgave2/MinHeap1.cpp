@@ -107,14 +107,18 @@ private:
      */
     void percolateDown(int i)
     {
+        // Base Case 1: Hvis indeks er lig med størrelsen af heap'en, er der ingen yderligere børn at percolate med, så vi afslutter rekursionen
         if (heap.size() == i)
             return;
 
+        // Finder indekset for det mindste barn
         int smallestNr = smallest(i);
+        // Hvis den aktuelle node er mindre end eller lig med det mindste barn, er heap-egenskaben opretholdt, så afslut rekursionen
         if (heap[i] <= heap[smallestNr])
             return;
-
+        // Hvis den aktuelle node er større end det mindste barn, skal vi bytte dem for at genoprette heap-egenskaben
         std::swap(heap[i], heap[smallestNr]);
+        // Rekursivt kald til percolateDown på det mindste barn for at fortsætte percolating nedad
         percolateDown(smallestNr);
     }
 
