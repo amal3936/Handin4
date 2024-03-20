@@ -1,41 +1,88 @@
-#ifndef _SET_H_
-#define _SET_H_
-
+#include <vector>
 #include "binary_search_tree.h"
 
-#include <iostream>
-#include <stdexcept>
+using namespace std;
 
-template<typename Comparable>
-class Set {
+template <typename Comparable>
+class Set
+{
 private:
-    struct BinaryNode {
-        Comparable element;
-        BinaryNode* left;
-        BinaryNode* right;
-        BinaryNode* parent;
-
-        BinaryNode(const Comparable& theElement, BinaryNode* lt, BinaryNode* rt, BinaryNode* pt) :
-            element{ theElement }, left{ lt }, right{ rt }, parent{ pt } {}
-    };
-
-    BinarySearchTree<Comparable> bst;
+    size_t theSize;
+    BinarySearchTree<Comparable> tree;
 
 public:
     Set() {}
 
-    ~Set() {}
+    ~Set() { clear(); }
 
-    void insert(const Comparable& x) {
+    Set(const Set &s) : tree(s.tree)
+    {
+        // TO BE IMPLEMENTED
     }
 
-    bool find(const Comparable& x) const {
-        return bst.contains(x);
+    void clear()
+    {
+        // TO BE IMPLEMENTED
+        iterator it = this->begin();
+        while (!empty()) // ADDED
+        {
+            it = erase(it);
+        }
     }
 
-    void erase(const Comparable& x) {
-        bst.remove(x);
+    size_t size() const
+    {
+        // TO BE IMPLEMENTED
+        return theSize; // ADDED
+    }
+
+    bool empty() const
+    {
+        // TO BE IMPLEMENTED
+        return tree.isEmpty(); // ADDED
+    }
+
+    void push(const Comparable &t)
+    {
+        // TO BE IMPLEMENTED
+        tree.insert(t); // ADDED
+    }
+
+    void print()
+    {
+        tree.printTree();
+    }
+
+    friend class BinarySearchTree<Comparable>;
+    typedef typename BinarySearchTree<Comparable>::iterator iterator;
+
+    iterator begin() const
+    {
+        // TO BE IMPLEMENTED
+        return iterator(tree.findMin()); // ADDED find minimum value in tree
+    }
+
+    iterator end() const
+    {
+        // TO BE IMPLEMENTED
+        return tree.findMax(); // ADDED find minimum value in tree
+    }
+
+    iterator insert(const Comparable &t)
+    {
+        // TO BE IMPLEMENTED
+        return tree.insert(t); // ADDED
+    }
+
+    iterator find(const Comparable &t)
+    {
+        // TO BE IMPLEMENTED
+        return tree.find(t); // ADDED
+    }
+
+    iterator erase(iterator &itr)
+    {
+        // TO BE IMPLEMENTED
+        return tree.erase(itr); // ADDED
     }
 };
-
-#endif
