@@ -15,16 +15,15 @@ public:
 
     ~Set() { clear(); }
 
+    //Efterladt tom da det sker i binary_search_tree
     Set(const Set &s) : tree(s.tree)
     {
-        // TO BE IMPLEMENTED
     }
 
     void clear()
     {
-        // TO BE IMPLEMENTED
         iterator it = this->begin();
-        while (!empty()) // ADDED
+        while (!empty())
         {
             it = erase(it);
         }
@@ -32,20 +31,17 @@ public:
 
     size_t size() const
     {
-        // TO BE IMPLEMENTED
-        return theSize; // ADDED
+        return theSize;
     }
 
     bool empty() const
     {
-        // TO BE IMPLEMENTED
-        return tree.isEmpty(); // ADDED
+        return tree.isEmpty();
     }
 
     void push(const Comparable &t)
     {
-        // TO BE IMPLEMENTED
-        tree.insert(t); // ADDED
+        tree.insert(t);
     }
 
     void print()
@@ -56,33 +52,30 @@ public:
     friend class BinarySearchTree<Comparable>;
     typedef typename BinarySearchTree<Comparable>::iterator iterator;
 
+    //Anvender minimum da denne er start
     iterator begin() const
     {
-        // TO BE IMPLEMENTED
-        return iterator(tree.findMin()); // ADDED find minimum value in tree
+        return iterator(tree.findMin());
     }
 
+    //Anvender maksimum da denne er slut
     iterator end() const
     {
-        // TO BE IMPLEMENTED
-        return tree.findMax(); // ADDED find minimum value in tree
+        return tree.findMax(); 
     }
 
     iterator insert(const Comparable &t)
     {
-        // TO BE IMPLEMENTED
-        return tree.insert(t); // ADDED
+        return tree.insert(t);
     }
 
     iterator find(const Comparable &t)
     {
-        // TO BE IMPLEMENTED
-        return tree.find(t); // ADDED
+        return tree.find(t);
     }
 
     iterator erase(iterator &itr)
     {
-        // TO BE IMPLEMENTED
-        return tree.erase(itr); // ADDED
+        return tree.erase(itr);
     }
 };

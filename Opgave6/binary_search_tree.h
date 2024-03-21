@@ -1,3 +1,7 @@
+//////////////////////////////////////
+// copy of the given 6_set_template //
+//////////////////////////////////////
+
 #ifndef _BINARY_SEARCH_TREE_H_
 #define _BINARY_SEARCH_TREE_H_
 
@@ -16,13 +20,13 @@ private:
 		Comparable element;
 		BinaryNode *left;
 		BinaryNode *right;
-		// TO BE IMPLEMENTED - ADD parent pointer and update methods to reflect
-		BinaryNode *parent;																		  // ADDED line
-		BinaryNode(const Comparable &theElement, BinaryNode *lt, BinaryNode *rt, BinaryNode *p) : // ADDED p = nullptr
-																								  element{theElement}, left{lt}, right{rt}, parent{p}
-		{
-		} // ADDED parent
-	};
+
+		//Parent tilføjet
+		BinaryNode *parent;																		
+		BinaryNode(const Comparable &theElement, BinaryNode *lt, BinaryNode *rt, BinaryNode *p) :
+			element{theElement}, left{lt}, right{rt}, parent{p}
+		{}
+	}; 
 
 	BinaryNode *root;
 
@@ -205,10 +209,11 @@ public:
 			return node != it.node;
 		}
 
+		//Hvis der ikke findes en child-node med højere værdi returneres parent
+		//Hvis der findes et element med højere værdi, så findes den mindste værdi i den subtree - altså det næste nummer i rækken. 
 		iterator &operator++()
 		{
-			// TO BE IMPLEMENTED
-			if (node->right == nullptr && node->parent != nullptr) // ADDED if no right node(higher int), return parent
+			if (node->right == nullptr && node->parent != nullptr)
 			{
 				node = node->parent;
 			}
@@ -218,7 +223,7 @@ public:
 				while (node->left != nullptr)
 				{
 					node = node->left;
-				} // ADDED find min, that is higher than current node
+				}
 			}
 			return *this;
 		}
